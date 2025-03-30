@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  user-app-server:
+    build: ./user-app/server
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./user-app/server/.env
+    restart: always
