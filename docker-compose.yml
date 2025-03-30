@@ -6,4 +6,18 @@ services:
       - "3000:3000"
     env_file:
       - ./user-app/server/.env
+    networks:
+      - barkernetwork
     restart: always
+
+  load-test-svc-user-signup:
+    build: ./load-test-svc/
+    networks:
+      - barkernetwork
+    depends_on:
+      - user-app-server
+    restart: always
+
+networks:
+  barkernetwork:
+    driver: bridge
