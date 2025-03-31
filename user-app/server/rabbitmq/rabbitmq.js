@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-// const RABBITMQ_URL = "amqp://host.docker.internal";
+// const RABBITMQ_URL = "amqp://localhost";
 
 const RABBITMQ_URL = process.env.RABBITMQ_URL;
 
