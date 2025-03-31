@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import apiRoutes from "./routes/api/api.js";
 
 dotenv.config();
 
@@ -7,17 +8,12 @@ const app = express();
 
 app.use(express.json());
 
+app.use("/api", apiRoutes);
+
 app.get("/", (req, res) => {
+  console.log("- HIT ON URL: /");
+
   res.send("Hello, World!");
-});
-
-app.post("/api/user", (req, res) => {
-  console.log("- HIT ON URL: /api/user");
-
-  const user = req.body;
-  console.log(user);
-
-  res.status(201).json({ message: "User successfully created.", user: user });
 });
 
 const PORT = process.env.PORT || 3000;
