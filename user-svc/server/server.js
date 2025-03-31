@@ -1,19 +1,17 @@
-import express from "express";
 import dotenv from "dotenv";
+import { consumeMessages } from "./rabbitmq/rabbitmq.js";
 
 dotenv.config();
 
-const app = express();
+const QUEUE_NAME = "user-svc";
 
-app.use(express.json());
+// Start consuming messages and log them
+consumeMessages(QUEUE_NAME, (message) => {
+  console.log(`[x] Received: ${message}`);
 
-app.get("/", (req, res) => {
-  console.log("- HIT ON URL: /");
-
-  res.send("Hello world!");
+  const parsedMessage = JSON.parse(message);
+  console.log(parsedMessage.method);
 });
 
-const PORT = process.env.PORT;
-app.listen(PORT, () => {
-  console.log(`user-svc is running on`, PORT);
-});
+// Keep the process running
+console.log("Message consumer is running...");

@@ -10,13 +10,11 @@ services:
       - RABBITMQ_URL=amqp://host.docker.internal
     restart: always
 
-  # USER SVC
+  # USER SVC SERVER
   user-svc-server:
     build: ./user-svc/server
-    ports:
-      - "3001:3001"
     environment:
-      - PORT=3001
+      - RABBITMQ_URL=amqp://host.docker.internal
     restart: always
 
   # LOAD TESTING

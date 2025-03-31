@@ -27,4 +27,4 @@ async function postSignup() {
 
 // interval method
 
-setInterval(postSignup, 1000);
+setInterval(postSignup, 5000);
