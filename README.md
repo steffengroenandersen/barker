@@ -4,7 +4,7 @@ To do
 
 [x] Create user-app server that takes in
 
-[] Make user-app server send a message to a queue
+[x] Make user-app server send a message to a queue
 
 [] Create user-svc and make it listen messages
 
