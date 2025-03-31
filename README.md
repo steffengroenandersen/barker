@@ -6,7 +6,7 @@ To do
 
 [x] Make user-app server send a message to a queue
 
-[] Create user-svc and make it listen messages
+[x] Create user-svc and make it listen messages
 
 [] Make user-svc save to db
 
