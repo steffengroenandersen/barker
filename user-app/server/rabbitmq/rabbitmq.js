@@ -1,6 +1,11 @@
 import amqp from "amqplib";
+import dotenv from "dotenv";
 
-const RABBITMQ_URL = "amqp://localhost";
+dotenv.config();
+
+// const RABBITMQ_URL = "amqp://host.docker.internal";
+
+const RABBITMQ_URL = process.env.RABBITMQ_URL;
 
 let connection = null;
 let channel = null;

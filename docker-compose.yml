@@ -1,23 +1,31 @@
 version: "3.8"
 services:
+  # USER APP SERVER
   user-app-server:
     build: ./user-app/server
     ports:
       - "3000:3000"
-    env_file:
-      - ./user-app/server/.env
-    networks:
-      - barkernetwork
+    environment:
+      - PORT=3000
+      - RABBITMQ_URL=amqp://host.docker.internal
+    network_mode: "host"
     restart: always
 
+  # LOAD TESTING
   load-test-svc-user-signup:
     build: ./load-test-svc/
-    networks:
-      - barkernetwork
+    network_mode: "host"
     depends_on:
       - user-app-server
     restart: always
 
-networks:
-  barkernetwork:
-    driver: bridge
+  # DOCKER RABBITMQ INSTANCE
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672" # RabbitMQ AMQP port
+      - "15672:15672" # RabbitMQ Management UI port
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest

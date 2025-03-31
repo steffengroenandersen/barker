@@ -10,7 +10,7 @@ router.post("/", async (req, res) => {
   const user = req.body;
 
   // send message
-  const queue = "user-svc";
+  const queue = "test";
   const message = {
     method: "createUser",
     payload: JSON.stringify(user),

@@ -14,7 +14,7 @@ async function postSignup() {
 
   const newUser = createUser();
 
-  const response = await fetch("http://user-app-server:3000/api/user", {
+  const response = await fetch("http://localhost:3000/api/user", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
