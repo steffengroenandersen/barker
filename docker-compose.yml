@@ -1,5 +1,15 @@
 version: "3.8"
 services:
+  # DOCKER RABBITMQ INSTANCE
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672" # RabbitMQ AMQP port
+      - "15672:15672" # RabbitMQ Management UI port
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
   # USER APP SERVER
   user-app-server:
     build: ./user-app/server
@@ -8,6 +18,8 @@ services:
     environment:
       - PORT=3000
       - RABBITMQ_URL=amqp://host.docker.internal
+    depends_on:
+      - rabbitmq
     restart: always
 
   # USER SVC SERVER
@@ -20,17 +32,6 @@ services:
   # LOAD TESTING
   load-test-svc-user-signup:
     build: ./load-test-svc/
-    network_mode: "host"
     depends_on:
       - user-app-server
     restart: always
-
-  # DOCKER RABBITMQ INSTANCE
-  rabbitmq:
-    image: rabbitmq:management
-    ports:
-      - "5672:5672" # RabbitMQ AMQP port
-      - "15672:15672" # RabbitMQ Management UI port
-    environment:
-      RABBITMQ_DEFAULT_USER: guest
-      RABBITMQ_DEFAULT_PASS: guest
