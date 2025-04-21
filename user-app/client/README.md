@@ -10,6 +10,6 @@ https://dribbble.com/shots/24065520-Feed-Union-UI
 
 [x] - Setup Home if logged in
 
-[] - Setup Register
+[x] - Setup Register
 
 [] - Setup Login

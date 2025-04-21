@@ -17,23 +17,23 @@ To do
 1. Make sure Docker Desktop is running
 2. run 'docker-compose up --build'
 
-# How to run dev
-
-- Terminal #1 / user client
-- - cd user-app/client
-- - npm run dev
-- Terminal #2 / user server
-- - cd user-app/server
-- - npm run dev
-
 ## RabbitMQ
 
 Is running on http://localhost:15672/
 
 ## User Client
 
-Is running on http://localhost:5173/
+- cd user-app/client
+- npm run dev
+- Is running on http://localhost:5173/
 
 ## User Server
 
-Is running on http://localhost:3000
+- cd user-app/server
+- npm run dev
+- Is running on http://localhost:3000
+
+## Test Service
+
+- cd load-test-svc
+- npm run dev

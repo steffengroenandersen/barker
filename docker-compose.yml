@@ -32,6 +32,8 @@ services:
   # LOAD TESTING
   load-test-svc-user-signup:
     build: ./load-test-svc/
+    environment:
+      - API_URL=http://host.docker.internal
     depends_on:
       - user-app-server
     restart: always
