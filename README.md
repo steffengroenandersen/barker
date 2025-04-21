@@ -26,6 +26,10 @@ To do
 - - cd user-app/server
 - - npm run dev
 
+## RabbitMQ
+
+Is running on http://localhost:15672/
+
 ## User Client
 
 Is running on http://localhost:5173/

@@ -8,6 +8,7 @@ router.post("/", async (req, res) => {
 
   // Get user object
   const user = req.body;
+  console.log(user);
 
   // send message
   const queue = "user-svc";
