@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-
 import { useState } from "react";
+import { Link } from "react-router";
 
 export default function HomeNotLoggedIn() {
   const [email, setEmail] = useState("");
@@ -14,8 +14,8 @@ export default function HomeNotLoggedIn() {
   };
   return (
     <>
-      <section className="flex justify-center items-center h-screen">
-        <div className="bg-white p-5 rounded-md shadow w-[400px] sm:w-[800px] m-2">
+      <section className="flex flex-col justify-center items-center h-screen">
+        <div className="bg-white p-5 rounded-md shadow min-w-80 sm:min-w-[400px]">
           <h1>Login</h1>
           <form className="flex flex-col gap-2">
             <Input
@@ -35,6 +35,9 @@ export default function HomeNotLoggedIn() {
             <Button onClick={login}>Login</Button>
           </form>
         </div>
+        <p>
+          Or register <Link to="/register">here</Link>
+        </p>
       </section>
     </>
   );
