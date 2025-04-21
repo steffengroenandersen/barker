@@ -18,8 +18,7 @@ export default function Home() {
 
   return (
     <>
-      <h1>Home</h1>
-      {isLoggedIn ? <HomeLoggedIn /> : <HomeNotLoggedIn />}
+      <main className="">{isLoggedIn ? <HomeLoggedIn /> : <HomeNotLoggedIn />}</main>
     </>
   );
 }
