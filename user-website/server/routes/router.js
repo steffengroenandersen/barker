@@ -1,23 +1,32 @@
 import { Router } from "express";
+import db from "../db/db.js";
 
 const router = Router();
 
 const users = [];
 
-router.post("/signup", (req, res) => {
+router.post("/signup", async (req, res) => {
   const { email, password, repeatPassword } = req.body;
 
   if (!email || !password || password !== repeatPassword) {
     return res.status(400).json({ error: "Invalid signup data." });
   }
 
-  if (users.find((user) => user.email === email)) {
-    return res.status(400).json({ error: "User already exists." });
-  }
+  try {
+    const existingUser = await db.users.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ error: "User already exists." });
+    }
 
-  users.push({ email, password });
-  console.log(users);
-  res.status(201).json({ message: "Signup succesful." });
+    await db.users.insertOne({ email, password });
+
+    console.log(`New user signed up: ${email}`);
+
+    return res.status(201).json({ message: "Signup successful." });
+  } catch (error) {
+    console.error("Signup error:", error);
+    return res.status(500).json({ error: "Internal server error." });
+  }
 });
 
 router.post("/login", (req, res) => {
