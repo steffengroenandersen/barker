@@ -46,9 +46,27 @@
 
 ### test svc
 
-# User Website
+# Barker User Website
 
 ## Client
 
 React
 http://localhost:5173/
+
+cd user-website/client
+npm run dev
+
+## Server
+
+Express
+http://localhost:3000/
+
+cd user-website/server
+npm run dev
+
+## Database
+
+MongoDB
+mongodb://mongodb:27017
+
+Install and run MongoDB
