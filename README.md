@@ -5,7 +5,7 @@
 - [x] Create React frontend
 - [x] Create Express Backend
 - [ ] Create MongoDB
-- [ ] Deploy Docker containers
+- [x] Deploy Docker containers
 - [ ] Create signup flow
 - [ ] Create login flow
 - [ ] Create post bark flow

@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  frontend:
+    container_name: barker-user-website-client
+    build: ./user-website/client
+    ports:
+      - "5173:5173"
+
+  backend:
+    container_name: barker-user-website-server
+    build: ./user-website/server
+    ports:
+      - "3000:3000"
