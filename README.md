@@ -2,7 +2,7 @@
 
 ### user-website todo
 
-- [ ] Create React frontend
+- [x] Create React frontend
 - [ ] Create Express Backend
 - [ ] Create MongoDB
 - [ ] Deploy Docker containers
