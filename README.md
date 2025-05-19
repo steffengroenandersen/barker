@@ -4,7 +4,7 @@
 
 - [x] Create React frontend
 - [x] Create Express Backend
-- [ ] Create MongoDB
+- [x] Create MongoDB
 - [x] Deploy Docker containers
 - [ ] Create signup flow
 - [ ] Create login flow
