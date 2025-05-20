@@ -15,9 +15,26 @@ services:
     environment:
       - MONGODB_URI=mongodb://mongodb:27017
       - PORT=3000
+      - RABBITMQ_URL=amqp://admin:admin@rabbitmq:5672
 
   mongodb:
     container_name: barker-user-website-database
     image: mongo:6
     ports:
       - "27018:27017"
+
+  rabbitmq:
+    container_name: barker-rabbitmq
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+
+  moderation-svc:
+    container_name: barker-moderation-svc
+    build: ./moderation-svc/server
+    environment:
+      - RABBITMQ_URL=amqp://admin:admin@rabbitmq:5672
