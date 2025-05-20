@@ -1,6 +1,11 @@
 import { MongoClient } from "mongodb";
 
-const URL = process.env.MONGO_URI || "mongodb://mongodb:27017";
+// DEV
+const URL = process.env.MONGO_URI || "mongodb://localhost:27017";
+
+// PROD
+// const URL = process.env.MONGO_URI || "mongodb://mongodb:27017";
+
 const DB_NAME = "barker";
 
 const client = new MongoClient(URL);

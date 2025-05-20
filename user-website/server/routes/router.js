@@ -41,12 +41,27 @@ router.post("/login", (req, res) => {
   return res.status(200).json({ message: "Login succesful." });
 });
 
+const dummyBarks = [
+  { email: "steffen@localhost.com", body: "Woof woof!" },
+  { email: "amanda@localhost.com", body: "Much bark. So wow." },
+];
+
 router.get("/barks", (req, res) => {
-  const dummyBarks = [
-    { email: "steffen@localhost.com", body: "Woof woof!" },
-    { email: "amanda@localhost.com", body: "Much bark. So wow." },
-  ];
   return res.json(dummyBarks);
+});
+
+router.post("/barks", (req, res) => {
+  const { email, body } = req.body;
+
+  if (!email || !body) {
+    return res.status(400).json({ error: "Missing email or bark body." });
+  }
+
+  const newBark = { email, body };
+  dummyBarks.push(newBark);
+  console.log(dummyBarks);
+
+  return res.status(201).json({ message: "Bark added succesfully." });
 });
 
 export default router;
