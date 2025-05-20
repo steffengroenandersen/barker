@@ -20,7 +20,7 @@ async function initializeDatabase() {
 
   return {
     users: db.collection("users"),
-    posts: db.collection("posts"),
+    posts: db.collection("barks"),
   };
 }
 

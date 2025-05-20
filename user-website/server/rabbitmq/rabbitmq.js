@@ -1,5 +1,4 @@
 import amqp from "amqplib";
-import dotenv from "dotenv";
 
 // const RABBITMQ_URL = "amqp://localhost";
 

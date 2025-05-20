@@ -1,6 +1,8 @@
 import { Router } from "express";
 import db from "../db/db.js";
 
+import { sendMessage } from "../rabbitmq/rabbitmq.js";
+
 const router = Router();
 
 const users = [];
@@ -50,7 +52,7 @@ router.get("/barks", (req, res) => {
   return res.json(dummyBarks);
 });
 
-router.post("/barks", (req, res) => {
+router.post("/barks", async (req, res) => {
   const { email, body } = req.body;
 
   if (!email || !body) {
@@ -60,6 +62,17 @@ router.post("/barks", (req, res) => {
   const newBark = { email, body };
   dummyBarks.push(newBark);
   console.log(dummyBarks);
+
+  // 🔥 Emit "bark.created" event
+  try {
+    await sendMessage("bark.created", {
+      type: "bark.created",
+      data: newBark,
+      timestamp: new Date().toISOString(),
+    });
+  } catch (err) {
+    console.error("Failed to send RabbitMQ message:", err);
+  }
 
   return res.status(201).json({ message: "Bark added succesfully." });
 });
