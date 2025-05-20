@@ -15,7 +15,7 @@
 
 ### moderation-svc todo
 
-- [ ] Create Express backend
+- [x] Create RabbitMQ Consumer
 - [ ] Create Docker containers
 - [ ] Create Scanner functionality
 - [ ] Create consume RabbitMQ post.created flow

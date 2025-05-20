@@ -55,15 +55,17 @@ router.get("/barks", (req, res) => {
 router.post("/barks", async (req, res) => {
   const { email, body } = req.body;
 
+  // Validate input
   if (!email || !body) {
     return res.status(400).json({ error: "Missing email or bark body." });
   }
 
+  // Create and save new bark
   const newBark = { email, body };
   dummyBarks.push(newBark);
   console.log(dummyBarks);
 
-  // 🔥 Emit "bark.created" event
+  // Push new bark to moderation service
   try {
     await sendMessage("bark.created", {
       type: "bark.created",
@@ -74,6 +76,7 @@ router.post("/barks", async (req, res) => {
     console.error("Failed to send RabbitMQ message:", err);
   }
 
+  // Return status to client
   return res.status(201).json({ message: "Bark added succesfully." });
 });
 

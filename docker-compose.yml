@@ -12,6 +12,9 @@ services:
     build: ./user-website/server
     ports:
       - "3000:3000"
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017
+      - PORT=3000
 
   mongodb:
     container_name: barker-user-website-database

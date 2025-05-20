@@ -1,10 +1,10 @@
 import { MongoClient } from "mongodb";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // DEV
-const URL = process.env.MONGO_URI || "mongodb://localhost:27017";
-
-// PROD
-// const URL = process.env.MONGO_URI || "mongodb://mongodb:27017";
+const URL = process.env.MONGODB_URI || "mongodb://localhost:27017";
 
 const DB_NAME = "barker";
 
