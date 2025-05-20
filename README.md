@@ -8,17 +8,17 @@
 - [x] Deploy Docker containers
 - [ ] Create signup flow
 - [ ] Create login flow
-- [ ] Create post bark flow
+- [x] Create post bark flow
 - [ ] Create home page with barks
-- [ ] Create and send RabbitMQ post.created flow
+- [x] Create and send RabbitMQ post.created flow
 - [ ] Create and send RabbitMQ email.send flow
 
 ### moderation-svc todo
 
 - [x] Create RabbitMQ Consumer
-- [ ] Create Docker containers
+- [x] Create Docker containers
+- [x] Create consume RabbitMQ post.created flow
 - [ ] Create Scanner functionality
-- [ ] Create consume RabbitMQ post.created flow
 - [ ] Create and send RabbitMQ post.flagged flow
 
 ### email-svc todo
@@ -48,25 +48,44 @@
 
 # Barker User Website
 
-## Client
+## User Website Client
 
 React
 http://localhost:5173/
 
-cd user-website/client
-npm run dev
+1. cd user-website/client
+2. npm run dev
 
-## Server
+## User Website Server
 
 Express
 http://localhost:3000/
 
-cd user-website/server
-npm run dev
+1. cd user-website/server
+2. npm run dev
 
-## Database
+## Moderation Service
+
+1. cd moderation-svc
+2. nodemon server.js
+
+## User Website Database
 
 MongoDB
 mongodb://mongodb:27017
 
 Install and run MongoDB
+
+## Barker RabbitMQ
+
+http://localhost:15672/
+
+Login credentials DEV
+
+- guest
+- guest
+
+Login credentials PROD
+
+- admin
+- admin
