@@ -18,8 +18,8 @@
 - [x] Create RabbitMQ Consumer
 - [x] Create Docker containers
 - [x] Create consume RabbitMQ post.created flow
-- [ ] Create Scanner functionality
-- [ ] Create and send RabbitMQ post.flagged flow
+- [x] Create Scanner functionality
+- [x] Create and send RabbitMQ post.flagged flow
 
 ### email-svc todo
 
