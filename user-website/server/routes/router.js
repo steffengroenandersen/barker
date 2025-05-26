@@ -20,10 +20,22 @@ router.post("/signup", async (req, res) => {
       return res.status(400).json({ error: "User already exists." });
     }
 
+    // Save to db
     await db.users.insertOne({ email, password });
 
-    console.log(`New user signed up: ${email}`);
+    // Push new user to email service
+    try {
+      await sendMessage("user.created", {
+        type: "user.created",
+        data: { email },
+        timestamp: new Date().toISOString(),
+      });
+    } catch (err) {
+      console.error("Failed to send RabbitMQ message:", err);
+    }
 
+    // Log and return status
+    console.log(`New user signed up: ${email}`);
     return res.status(201).json({ message: "Signup successful." });
   } catch (error) {
     console.error("Signup error:", error);

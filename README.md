@@ -23,13 +23,13 @@
 
 ### email-svc todo
 
-- [ ] Create backend
-- [ ] Create Docker containers
-- [ ] Create SendGrid integration
+- [x] Create backend
+- [x] Create Docker containers
+- [x] Create SendGrid integration
 - [ ] Create idempotence checker
-- [ ] Create Welcome email
-- [ ] Create consume email.send flow
-- [ ] Create automated email send flow
+- [x] Create Welcome email
+- [x] Create consume email.send flow
+- [x] Create automated email send flow
 
 ### admin-website todo
 
@@ -48,6 +48,9 @@
 ### test svc
 
 - [x] Create automatic signup
+
+1. cd test-svc
+2. npm run dev
 
 # Barker User Website
 
@@ -79,6 +82,11 @@ mongodb://mongodb:27017
 
 Install and run MongoDB
 
+## Email Service
+
+1. cd email-svc
+2. npm run dev
+
 ## Barker RabbitMQ
 
 http://localhost:15672/
@@ -88,7 +96,7 @@ Login credentials DEV
 - guest
 - guest
 
-Login credentials PROD
+Login credentials Docker
 
 - admin
 - admin

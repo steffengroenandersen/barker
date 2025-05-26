@@ -36,6 +36,16 @@ services:
   moderation-svc:
     container_name: barker-moderation-svc
     build: ./moderation-svc/server
+    depends_on:
+      - rabbitmq
+    environment:
+      - RABBITMQ_URL=amqp://admin:admin@rabbitmq:5672
+
+  email-svc:
+    container_name: barker-email-service
+    build: ./email-svc/
+    depends_on:
+      - rabbitmq
     environment:
       - RABBITMQ_URL=amqp://admin:admin@rabbitmq:5672
 
