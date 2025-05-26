@@ -62,8 +62,7 @@ router.post("/barks", async (req, res) => {
 
   // Create and save new bark
   const newBark = { email, body };
-  dummyBarks.push(newBark);
-  console.log(dummyBarks);
+  await db.barks.insertOne({ email, body });
 
   // Push new bark to moderation service
   try {

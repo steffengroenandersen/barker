@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-// DEV
 const URL = process.env.MONGODB_URI || "mongodb://localhost:27017";
 
 const DB_NAME = "barker";
@@ -20,7 +19,7 @@ async function initializeDatabase() {
 
   return {
     users: db.collection("users"),
-    posts: db.collection("barks"),
+    barks: db.collection("barks"),
   };
 }
 

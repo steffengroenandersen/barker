@@ -43,5 +43,35 @@ async function testSignup() {
   }
 }
 
-// Run every 10 seconds
-setInterval(testSignup, INTERVAL);
+/* 
+
+TEST POST BARK
+
+*/
+async function testPostBark() {
+  const body = {
+    email: "steffen@localhost.com",
+    body: "Woof, woofy!",
+  };
+
+  try {
+    const response = await fetch(`${BACKEND_URL}/api/v1/barks`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    const result = await response.json();
+    console.log(`[${new Date().toISOString()}] Bark posted - Status: ${response.status}`);
+    console.log(result);
+  } catch (error) {
+    console.error(`[${new Date().toISOString()}] Error posting bark:`, error);
+  }
+}
+
+setInterval(() => {
+  testSignup();
+  testPostBark();
+}, INTERVAL);
