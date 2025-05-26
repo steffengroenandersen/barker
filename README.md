@@ -23,9 +23,10 @@
 
 ### email-svc todo
 
-- [ ] Create Express backend
+- [ ] Create backend
 - [ ] Create Docker containers
 - [ ] Create SendGrid integration
+- [ ] Create idempotence checker
 - [ ] Create Welcome email
 - [ ] Create consume email.send flow
 - [ ] Create automated email send flow
@@ -45,6 +46,8 @@
 - [ ] Create and send RabbitMQ post.delete flow
 
 ### test svc
+
+- [x] Create automatic signup
 
 # Barker User Website
 

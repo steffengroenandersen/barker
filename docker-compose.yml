@@ -38,3 +38,9 @@ services:
     build: ./moderation-svc/server
     environment:
       - RABBITMQ_URL=amqp://admin:admin@rabbitmq:5672
+
+  test-svc:
+    container_name: test-svc
+    build: ./test-svc/
+    environment:
+      - BACKEND_URL=http://backend:3000
