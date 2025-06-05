@@ -6,10 +6,13 @@
 - [x] Create Express Backend
 - [x] Create MongoDB
 - [x] Deploy Docker containers
-- [ ] Create signup flow
-- [ ] Create login flow
+- [x] Create signup flow
+- [x] Create login flow
 - [x] Create post bark flow
-- [ ] Create home page with barks
+- [x] Create home page with barks
+- [ ] Add proper authentication
+- [ ] Update session data
+- [ ] Update bark creation with session data and real user info
 - [x] Create and send RabbitMQ post.created flow
 - [x] Create and send RabbitMQ email.send flow
 
@@ -26,7 +29,7 @@
 - [x] Create backend
 - [x] Create Docker containers
 - [x] Create SendGrid integration
-- [ ] Create idempotence checker
+- [x] Create idempotence checker
 - [x] Create Welcome email
 - [x] Create consume email.send flow
 - [x] Create automated email send flow
