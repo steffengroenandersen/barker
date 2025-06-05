@@ -50,7 +50,8 @@ router.post("/login", (req, res) => {
     return res.status(400).json({ error: "Invalid login data." });
   }
 
-  // find user logic
+  // TODO: Implement login logic
+  console.log("message: Login succcesful.");
 
   return res.status(200).json({ message: "Login succesful." });
 });
