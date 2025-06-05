@@ -11,7 +11,7 @@
 - [x] Create post bark flow
 - [ ] Create home page with barks
 - [x] Create and send RabbitMQ post.created flow
-- [ ] Create and send RabbitMQ email.send flow
+- [x] Create and send RabbitMQ email.send flow
 
 ### moderation-svc todo
 
