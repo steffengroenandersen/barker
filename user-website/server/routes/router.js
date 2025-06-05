@@ -1,5 +1,6 @@
 import { Router } from "express";
 import db from "../db/db.js";
+import crypto from "crypto";
 
 import { sendMessage } from "../rabbitmq/rabbitmq.js";
 
@@ -23,11 +24,21 @@ router.post("/signup", async (req, res) => {
     // Save to db
     await db.users.insertOne({ email, password });
 
+    // Create idempotency key
+
+    const idempotencyKey = crypto
+      .createHash("sha256")
+      .update(email + "user.created")
+      .digest("hex");
+
+    console.log("KEY", idempotencyKey);
+
     // Push new user to email service
     try {
       await sendMessage("user.created", {
         type: "user.created",
         data: { email },
+        idempotencyKey,
         timestamp: new Date().toISOString(),
       });
     } catch (err) {

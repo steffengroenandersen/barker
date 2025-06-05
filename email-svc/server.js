@@ -2,6 +2,7 @@ import amqp from "amqplib";
 import dotenv from "dotenv";
 
 import { emailSignups } from "./sendgrid/sendgrid.js";
+import { processedKeys } from "./db/db.js";
 
 dotenv.config();
 
@@ -16,10 +17,20 @@ async function startConsumer() {
   await channel.assertQueue(queue, { durable: false });
 
   console.log(`Listening for messages on "${queue}"...`);
+
   channel.consume(queue, async (msg) => {
     if (msg !== null) {
       const content = JSON.parse(msg.content.toString());
+      const idempotencyKey = content.idempotencyKey;
+
       console.log("Received event:", content);
+
+      // Check if email has recieved this before
+      if (processedKeys.has(idempotencyKey)) {
+        console.log("Duplicate event ignored:", idempotencyKey);
+        channel.ack(msg);
+        return;
+      }
 
       // Send message
       emailSignups(content.data.email);
