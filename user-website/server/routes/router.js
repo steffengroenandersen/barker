@@ -56,13 +56,15 @@ router.post("/login", (req, res) => {
   return res.status(200).json({ message: "Login succesful." });
 });
 
-const dummyBarks = [
-  { email: "steffen@localhost.com", body: "Woof woof!" },
-  { email: "amanda@localhost.com", body: "Much bark. So wow." },
-];
-
-router.get("/barks", (req, res) => {
-  return res.json(dummyBarks);
+router.get("/barks", async (req, res) => {
+  try {
+    // Fetch all barks from the MongoDB collection
+    const barks = await db.barks.find({}).toArray();
+    return res.json(barks);
+  } catch (error) {
+    console.error("Failed to fetch barks:", error);
+    return res.status(500).json({ error: "Failed to fetch barks." });
+  }
 });
 
 router.post("/barks", async (req, res) => {
